@@ -2,7 +2,8 @@ import fs from 'node:fs';
 import { createRequire } from 'node:module';
 import path from 'node:path';
 
-import { defineConfig, type TsdownPlugin } from 'tsdown';
+import type { TsdownPlugin } from 'tsdown';
+import { defineConfig } from 'tsdown';
 
 // Plugin to automatically resolve .worker.ts files instead of .ts files
 function workerAliasPlugin(): TsdownPlugin {
@@ -115,6 +116,7 @@ export default defineConfig({
         '@honeybadger-io/js': path.resolve('./lib/shims/honeybadger.ts'),
         typescript: path.resolve('./lib/shims/typescript.ts'),
         jsdom: path.resolve('./lib/shims/jsdom.ts'),
+        'pac-proxy-agent': path.resolve('./lib/shims/pac-proxy-agent.ts'),
         'simplecc-wasm': path.resolve('./lib/shims/simplecc-wasm.ts'),
         cifrante: path.join(path.dirname(cifrante), 'cifrante.mjs'),
         // Routes file with Worker-specific build (match relative import from lib/)
